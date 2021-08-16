@@ -10,7 +10,7 @@ switch(option){
         console.log("Address Book created!");
         while(true){
             console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Delete a contact");
-           console.log("Enter 5 to count the no of contacts \nEnter 6 to Exit\n");
+           console.log("Enter 5 to count the no of contacts \nEnter 6 to search based on city or state name \nEnter 7 to Exit\n");
             var options = prompt("Enter option: ");
         switch(options){
             case "1":
@@ -36,6 +36,30 @@ switch(option){
                 console.log("The number of contacts :"+addressbook.reduce((countContacts) => countContacts+=1,0));
                 break;
             case "6":
+                //UC-8 Search based on city or state name using filter
+                console.log("***Search based on city or state name***");
+                var opt = prompt('Enter 1 for city / Enter 2 for state : ');
+                if(opt == 1){
+                    var cityname= prompt('Enter city name : ');
+                    var result = addressbook.filter(x=>x.City == cityname);
+                    if(result.length>0){
+                    console.log("Based on city name "+cityname);
+                    Display(result);
+                }else{
+                    console.log("No contacts in city "+cityname);
+                }
+                }else if(opt == 2){
+                    var statename = prompt('Enter state name name : ');
+                    var result = addressbook.filter(x=>x.State == statename);
+                    if(result.length>0){
+                    console.log("Based on state name "+statename);
+                    Display(result);
+                    }else{
+                        console.log("No contacts in state "+statename);
+                    }
+                }
+                break;
+            case "7":
                 return;
         }
     }
