@@ -168,15 +168,17 @@ function Modify(address)
 function Delete(address){
     var firstName = prompt('Enter first name :');
     var lastName = prompt('Enter last name: ');
-    var result = address.find(x=>x.firstName == firstName && x.lastName == lastName);  
-    if(result != null){
-        //pop out the contact
-    address.pop(result);
-    console.log("Deleted successfully");
-    }else{
-        console.log("No contacts found!");
+    for(let i = 0;i<address.length;i++){
+        if(address[i].firstName == firstName && address[i].lastName == lastName){
+            address.splice(i,1);
+            console.log("Deleted successfully");
+            break;
+        }
+       
     }
+    console.log("Not found!");
 }
+
 //UC-9 Ability to view based on city or name
 function ViewByCity(address){
         var city = new Map();
