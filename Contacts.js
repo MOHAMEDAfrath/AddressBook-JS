@@ -10,7 +10,7 @@ switch(option){
         console.log("Address Book created!");
         while(true){
             console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Delete a contact");
-           console.log("Enter 5 to count the no of contacts \nEnter 6 to search based on city or state name \nEnter 7 to view based on city nad state name  \nEnter 8 to Exit\n");
+           console.log("Enter 5 to count the no of contacts \nEnter 6 to search based on city or state name \nEnter 7 to view based on city nad state name \nEnter 8 to sort by name \nEnter 9 to Exit\n");
             var options = prompt("Enter option: ");
         switch(options){
             case "1":
@@ -64,6 +64,10 @@ switch(option){
                 ViewByCity(addressbook);            
                 break;
             case "8":
+                console.log("***sort by name***");
+                sortBasedonName(addressbook);
+                break;
+            case "9":
                 return;
         }
     }
@@ -205,6 +209,15 @@ function ViewByCity(address){
         Display(value);
     }
 
+}
+//UC-11 Sort based on name
+function sortBasedonName(address){
+    address.sort(function (x, y) {
+        let a = x.firstName.toUpperCase(),
+            b = y.firstName.toUpperCase();
+        return a == b ? 0 : a > b ? 1 : -1;
+    });
+    Display(address);
 }
 //displays the contact
 function Display(address){
