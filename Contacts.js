@@ -9,7 +9,7 @@ switch(option){
         var addressbook = new Array();
         console.log("Address Book created!");
         while(true){
-            console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Exit\n");
+            console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Delete a contact \nEnter 5 to Exit\n");
             var options = prompt("Enter option: ");
         switch(options){
             case "1":
@@ -26,6 +26,10 @@ switch(option){
                 Modify(addressbook);
                 break;
             case "4":
+                console.log("***Delete a contact***");
+                Delete(addressbook);
+                break;
+            case "5":
                 return;
         }
     }
@@ -52,14 +56,14 @@ function AddContacts(address) {
     address.push(contact);
     console.log(`Added ${contact.firstName} successfully`);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
   return address;
 }
 //UC-4 Modify existing details
 function Modify(address)
 {   
-    var firstName = prompt('Enter first name :');
+    var firstName = prompt('Enter first name : ');
     var result = address.find(x=>x.firstName == firstName);
     if(result == null){
         console.log("Enter valid name!")
@@ -106,8 +110,21 @@ function Modify(address)
 
             }
         }catch(e){
-            console.log(e);
+            console.error(e);
         }
+    }
+}
+//UC-5 Delete a contact
+function Delete(address){
+    var firstName = prompt('Enter first name :');
+    var lastName = prompt('Enter last name: ');
+    var result = address.find(x=>x.firstName == firstName && x.lastName == lastName);  
+    if(result != null){
+        //pop out the contact
+    address.pop(result);
+    console.log("Deleted successfully");
+    }else{
+        console.log("No contacts found!");
     }
 }
 //displays the contact
@@ -121,3 +138,4 @@ function Display(address){
     console.log("No contacts found!");
 }
 }
+

@@ -24,7 +24,7 @@ class AddressBook{
         return this._address;
     }
     set address(value){
-        let addressRegex = RegExp("^[A-Z a-z]{4,}$");
+        let addressRegex = RegExp("^[a-zA-Z\\s]{4,}$");
         if(addressRegex.test(value))
         this._address = value;
         else
@@ -34,7 +34,7 @@ class AddressBook{
         return this._City;
     }
     set City(value){
-        let cityRegex = RegExp("^[A-Z a-z]{4,}$");
+        let cityRegex = RegExp("^[a-zA-Z\\s]{4,}$");
         if(cityRegex.test(value))
         this._City = value;
         else
@@ -44,7 +44,7 @@ class AddressBook{
         return this._State;
     }
     set State(value){
-        let stateRegex = RegExp("^[A-Z a-z]{4,}$");
+        let stateRegex = RegExp("^[a-zA-Z\\s]{4,}$");
         if(stateRegex.test(value))
         this._State = value;
         else
@@ -82,7 +82,7 @@ class AddressBook{
         throw 'Invalid Email';
     }
     toString(){
-        return `First Name : ${this.firstName}\nSecondName : ${this.lastName}\nAddress : ${this.address}\nCity : ${this.City}\nState : ${this.State}\nZip : ${this.zip}\nPhone : ${this.phone}\nemail : ${this.email}`
+        return `First Name : ${this.firstName}\nLastName : ${this.lastName}\nAddress : ${this.address}\nCity : ${this.City}\nState : ${this.State}\nZip : ${this.zip}\nPhone : ${this.phone}\nemail : ${this.email}`
     }
 
 }
