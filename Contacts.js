@@ -10,7 +10,7 @@ switch(option){
         console.log("Address Book created!");
         while(true){
             console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Delete a contact");
-           console.log("Enter 5 to count the no of contacts \nEnter 6 to search based on city or state name \nEnter 7 to view based on city nad state name \nEnter 8 to sort by name \nEnter 9 to Exit\n");
+           console.log("Enter 5 to count the no of contacts \nEnter 6 to search based on city or state name \nEnter 7 to view based on city and state name \nEnter 8 to sort by name,city,zip,state\nEnter 9 to Exit\n");
             var options = prompt("Enter option: ");
         switch(options){
             case "1":
@@ -66,6 +66,12 @@ switch(option){
             case "8":
                 console.log("***sort by name***");
                 sortBasedonName(addressbook);
+                console.log("***sort based on city name***")
+                sortBasedonCity(addressbook);
+                console.log("***sort based on state name***")
+                sortBasedonState(addressbook);
+                console.log("***sort based on zip***")
+                sortBasedonPincode(addressbook);
                 break;
             case "9":
                 return;
@@ -215,6 +221,31 @@ function sortBasedonName(address){
     address.sort(function (x, y) {
         let a = x.firstName.toUpperCase(),
             b = y.firstName.toUpperCase();
+        return a == b ? 0 : a > b ? 1 : -1;
+    });
+    Display(address);
+}
+//UC-12 Sortby city.state name and zip
+function sortBasedonCity(address){
+    address.sort(function (x, y) {
+        let a = x.City.toUpperCase(),
+            b = y.City.toUpperCase();
+        return a == b ? 0 : a > b ? 1 : -1;
+    });
+    Display(address);
+}
+function sortBasedonState(address){
+    address.sort(function (x, y) {
+        let a = x.State.toUpperCase(),
+            b = y.State.toUpperCase();
+        return a == b ? 0 : a > b ? 1 : -1;
+    });
+    Display(address);
+}
+function sortBasedonPincode(address){
+    address.sort(function (x, y) {
+        let a = parseInt(x.zip);
+            b = parseInt(y.zip);
         return a == b ? 0 : a > b ? 1 : -1;
     });
     Display(address);
