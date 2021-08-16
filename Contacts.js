@@ -9,7 +9,8 @@ switch(option){
         var addressbook = new Array();
         console.log("Address Book created!");
         while(true){
-            console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Delete a contact \nEnter 5 to Exit\n");
+            console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Delete a contact");
+           console.log("Enter 5 to count the no of contacts \nEnter 6 to Exit\n");
             var options = prompt("Enter option: ");
         switch(options){
             case "1":
@@ -30,6 +31,11 @@ switch(option){
                 Delete(addressbook);
                 break;
             case "5":
+                console.log("***count no of contacts****");
+                //UC-6 count the number of contacts using reduce and arrow function
+                console.log("The number of contacts :"+addressbook.reduce((countContacts) => countContacts+=1,0));
+                break;
+            case "6":
                 return;
         }
     }
