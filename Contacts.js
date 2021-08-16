@@ -59,8 +59,14 @@ function AddContacts(address) {
     contact.zip = prompt("Enter ZipCode: ");
     contact.phone = prompt("Enter phone number : ");
     contact.email = prompt("Enter email : ");
+    //UC-7 checks if already present,if not adds to array,else prints a message
+    //every returns true if contacts not present in array
+    if(address.length == 0 || address.every(x=>x.firstName != contact.firstName && x.lastName !=contact.lastName)){
     address.push(contact);
     console.log(`Added ${contact.firstName} successfully`);
+    }else{
+        console.log(`\nAlready present ${contact.firstName+" "+contact.lastName}! Please modify!`);
+    }
   } catch (e) {
     console.error(e);
   }
