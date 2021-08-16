@@ -10,7 +10,7 @@ switch(option){
         console.log("Address Book created!");
         while(true){
             console.log("\nEnter 1 to add details to book \nEnter 2 to Display \nEnter 3 to Modify Exisiting Contact \nEnter 4 to Delete a contact");
-           console.log("Enter 5 to count the no of contacts \nEnter 6 to search based on city or state name \nEnter 7 to Exit\n");
+           console.log("Enter 5 to count the no of contacts \nEnter 6 to search based on city or state name \nEnter 7 to view based on city nad state name  \nEnter 8 to Exit\n");
             var options = prompt("Enter option: ");
         switch(options){
             case "1":
@@ -60,6 +60,10 @@ switch(option){
                 }
                 break;
             case "7":
+                console.log("****View based on City and state name****");
+                ViewByCity(addressbook);            
+                break;
+            case "8":
                 return;
         }
     }
@@ -162,6 +166,43 @@ function Delete(address){
     }else{
         console.log("No contacts found!");
     }
+}
+//UC-9 Ability to view based on city or name
+function ViewByCity(address){
+        var city = new Map();
+        var state = new Map();
+        address.forEach(contact =>{
+            var array = new Array();
+            //add to city map
+        if(city.has(contact.City))
+        {
+            array = city.get(contact.City);
+           
+        }
+        array.push(contact);
+        city.set(contact.City,array);
+    //add to state map
+        var array = new Array();
+        if(state.has(contact.State))
+        {
+            array = state.get(contact.State);
+           
+        }
+        array.push(contact);
+        state.set(contact.State,array);
+
+        
+
+    })
+    for(let [key,value] of city){
+        console.log("The contacts in city "+key);
+        Display(value);
+    }
+    for(let [key,value] of state){
+        console.log("The contacts in state "+key);
+        Display(value);
+    }
+
 }
 //displays the contact
 function Display(address){
