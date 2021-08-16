@@ -195,11 +195,13 @@ function ViewByCity(address){
 
     })
     for(let [key,value] of city){
-        console.log("The contacts in city "+key);
+        //UC-10 count based on city
+        console.log("There are " +value.length+ " contacts in city "+key);
         Display(value);
     }
     for(let [key,value] of state){
-        console.log("The contacts in state "+key);
+        //count based on state
+        console.log("There are " +value.length+ " contacts in state "+key);
         Display(value);
     }
 
